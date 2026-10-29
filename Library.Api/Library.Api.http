@@ -1,0 +1,83 @@
+@Library.Api_HostAddress = http://localhost:5292
+
+### ==========================================
+### LIBROS (BOOKS)
+### ==========================================
+
+### 1. Obtener todos los libros
+GET {{Library.Api_HostAddress}}/api/books
+Accept: application/json
+
+### 2. Obtener libro por ID
+GET {{Library.Api_HostAddress}}/api/books/1
+Accept: application/json
+
+### 3. Obtener autores de un libro específico
+GET {{Library.Api_HostAddress}}/api/books/1/authors
+Accept: application/json
+
+### 4. Crear un nuevo libro
+POST {{Library.Api_HostAddress}}/api/books
+Content-Type: application/json
+
+{
+  "id": 0,
+  "title": "Clean Code",
+  "description": "A Handbook of Agile Software Craftsmanship",
+  "pageCount": 464,
+  "excerpt": "Even bad code can function. But if code isn't clean...",
+  "publishDate": "2026-10-29T00:00:00Z"
+}
+
+### 5. Actualizar un libro existente
+PUT {{Library.Api_HostAddress}}/api/books/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Clean Code (Updated)",
+  "description": "Updated edition",
+  "pageCount": 500,
+  "excerpt": "Updated excerpt...",
+  "publishDate": "2026-10-29T00:00:00Z"
+}
+
+### 6. Eliminar un libro
+DELETE {{Library.Api_HostAddress}}/api/books/1
+
+### ==========================================
+### AUTORES (AUTHORS)
+### ==========================================
+
+### 7. Obtener todos los autores (con cálculo de BooksCount)
+GET {{Library.Api_HostAddress}}/api/authors
+Accept: application/json
+
+### 8. Obtener un autor por ID
+GET {{Library.Api_HostAddress}}/api/authors/1
+Accept: application/json
+
+### 9. Crear un nuevo autor
+POST {{Library.Api_HostAddress}}/api/authors
+Content-Type: application/json
+
+{
+  "id": 0,
+  "idBook": 1,
+  "firstName": "Robert",
+  "lastName": "Martin"
+}
+
+### 10. Actualizar un autor existente
+PUT {{Library.Api_HostAddress}}/api/authors/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "idBook": 1,
+  "firstName": "Robert C.",
+  "lastName": "Martin"
+}
+
+### 11. Eliminar un autor
+DELETE {{Library.Api_HostAddress}}/api/authors/1
